@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  database:
+    container_name: database
+    build: 
+      context: ../database
+      dockerfile: Dockerfile
+    ports:
+      - "443:3306"
+  phpmyadmin:
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8080:80"
+    links:
+      - database:db
+  backend:
+    container_name: backend
+    build: 
+      context: ../backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    links:
+      - database:mysql
+  frontend:
+    container_name: frontend
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
