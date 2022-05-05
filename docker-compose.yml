@@ -13,6 +13,8 @@ services:
   phpmyadmin:
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin:latest
+    depends_on:
+      - database
     ports:
       - 8080:80
     links:
@@ -25,6 +27,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3000:3000
+    depends_on:
+      - database
     links:
       - database:mysql
 
@@ -33,5 +37,8 @@ services:
     build:
       context: ../frontend
       dockerfile: Dockerfile
+    depends_on:
+      - database
+      - backend
     ports:
       - 80:80
