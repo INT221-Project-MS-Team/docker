@@ -6,8 +6,6 @@ services:
     build: 
       context: ../database
       dockerfile: Dockerfile
-    ports:
-      - 3306:3306
     restart: on-failure
 
   phpmyadmin:
@@ -16,7 +14,7 @@ services:
     depends_on:
       - database
     ports:
-      - 8081:80
+      - 8080:80
     links:
       - database:db
     restart: on-failure
@@ -26,8 +24,6 @@ services:
     build: 
       context: ../backend
       dockerfile: Dockerfile
-    ports:
-      - 3000:3000
     depends_on:
       - database
     links:
@@ -42,8 +38,6 @@ services:
     depends_on:
       - database
       - backend
-    ports:
-      - 8080:80
     restart: on-failure
 
   reverse_proxy:
