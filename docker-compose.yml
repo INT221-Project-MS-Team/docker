@@ -50,8 +50,8 @@ services:
       - frontend
     volumes:
       - ../reverse_proxy/nginx.conf:/etc/nginx/nginx.conf
-      - ../../certificateFiles/ip21sy2.crt:/etc/ssl/certs/ip21sy2.crt
-      - ../../certificateFiles/ip21sy2.key:/etc/ssl/private/ip21sy2.key
+      - ../cert/ip21sy2.crt:/etc/ssl/certs/ip21sy2.crt
+      - ../cert/ip21sy2.key:/etc/ssl/private/ip21sy2.key
     ports:
       - 80:80
     restart: on-failure
