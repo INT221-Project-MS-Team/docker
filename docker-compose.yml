@@ -54,4 +54,5 @@ services:
       - ../cert/ip21sy2.key:/etc/ssl/private/ip21sy2.key
     ports:
       - 80:80
+      - 443:443
     restart: on-failure
